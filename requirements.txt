@@ -1,0 +1,10 @@
+# 임시로 작성
+
+fastapi==0.111.0            # API 서버 구축용
+uvicorn[standard]==0.30.1   # fastapi 실행용 ASGI 서버
+pandas==2.2.2               # 교통 데이터 분석 및 수치 계산용
+numpy==1.26.4
+httpx==0.27.0               # 외부 API 요청
+python-multipart==0.0.9     # 파일 업로드 처리용
+matplotlib==3.8.4           # 데이터 시각화
+scikit-learn==1.4.2         # 간단한 머신러닝 알고리즘 또는 경로 추천 로직 시 활용
