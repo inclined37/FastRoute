@@ -33,7 +33,7 @@ def api_hello():
     return jsonify({"message" : "hello from api"})
 
 # AJAX 데이터 전송 예시
-@app.route("/api/data", method=["POST"])
+@app.route("/api/data", methods=["POST"])               # method 안에 배열 넣을거면 복수형으로 써야함.
 def api_data():
     data = request.json
     name = data.get("name", "익명")

@@ -2,25 +2,37 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>FastAPI 테스트</title>
+  <title>Flask AJAX 테스트</title>
 </head>
 <body>
-  <h1>메시지 보내기</h1>
-  <input type="text" id="messageInput" placeholder="메시지를 입력하세요">
-  <button onclick="sendMessage()">보내기</button>
-  <p id="responseText"></p>
+  <h1>Flask + AJAX 테스트 페이지</h1>
+  <button id="getBtn">GET API 호출</button>
+  <button id="postBtn">POST API 호출</button>
+
+  <p id="result"></p>
 
   <script>
-    async function sendMessage() {
-      const msg = document.getElementById("messageInput").value;
-      const res = await fetch("http://localhost:8000/send-data", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: msg })
-      });
-      const data = await res.json();
-      document.getElementById("responseText").innerText = data.response;
-    }
+    document.getElementById("getBtn").addEventListener("click", () => {
+        fetch("/api/hello")
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("result").innerText = data.message;
+        });
+    });
+
+    document.getElementById("postBtn").addEventListener("click", () => {
+        fetch("/api/data", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ name: "철수" })  // 서버로 보낼 JSON 데이터
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("result").innerText = data.message;
+        });
+    });
   </script>
 </body>
 </html>
